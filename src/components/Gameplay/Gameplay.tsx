@@ -44,7 +44,7 @@ const Gameplay = (props: GameplayProps) => {
 
   useEffect(() => {
     loadInitialImageSets();
-  }, []);
+  }, [loadInitialImageSets]);
 
   const addImageSetToQueue = async (visible = false) => {
     const newSet = await ImageService.getNextImageSet(); // Fetch a new set of images
