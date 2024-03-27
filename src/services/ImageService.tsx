@@ -5,7 +5,7 @@ class ImageService {
 
   // Public method to preload images
   public static async preloadImages(): Promise<void> {
-    while (this.imageQueue.length < 5) {
+    while (this.imageQueue.length < 3) {
       const allImages = await this.fetchImages();
       this.imageQueue.push(allImages);
     }
