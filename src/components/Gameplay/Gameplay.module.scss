@@ -1,0 +1,30 @@
+.gameplay {
+  position: relative;
+
+  .info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+}
+
+.imageSet {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%)
+}
+
+.imageGrid {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.image {
+  width: 200px;
+  height: 200px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}

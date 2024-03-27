@@ -1,0 +1,26 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 20px;
+
+  thead {
+    td {
+      background-color: #ead34c;
+      border: 1px solid #a18904;
+      padding: 8px;
+    }
+  }
+
+  tbody {
+    td {
+      border: 1px solid #a18904;
+      padding: 8px;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
