@@ -22,29 +22,33 @@ const Gameplay = (props: GameplayProps) => {
   const [timer, setTimer] = useState(30);
   const [initialLoad, setInitialLoad] = useState(true);
 
-  const loadInitialImageSets = useCallback(async () => {
-    setInitialLoad(true);
-    await ImageService.preloadImages();
-    // Fetch initial sets and render the first one visible
-    await addImageSetToQueue(true); // Initial set to be visible
-
-    const promises = [] as Promise<void>[];
-    for (let i = 1; i < 3; i++) {
-      // Prefetch 2 more sets
-      addImageSetToQueue(false);
-    }
-    await Promise.all(promises);
-    setInitialLoad(false);
+  useEffect(() => {
     if (visible) {
-      setInterval(() => {
+      const int = setInterval(() => {
         setTimer((prev) => prev - 1);
       }, 1000);
+      return () => {
+        clearInterval(int);
+      };
     }
   }, [visible]);
 
   useEffect(() => {
+    const loadInitialImageSets = async () => {
+      setInitialLoad(true);
+      await ImageService.preloadImages();
+      // Fetch initial sets and render the first one visible
+      await addImageSetToQueue(true); // Initial set to be visible
+
+      // Prefetch 4 more sets
+      for (let i = 0; i < 4; i++) {
+        addImageSetToQueue(false);
+      }
+
+      setInitialLoad(false);
+    };
     loadInitialImageSets();
-  }, [loadInitialImageSets]);
+  }, []);
 
   const addImageSetToQueue = async (visible = false) => {
     const newSet = await ImageService.getNextImageSet(); // Fetch a new set of images

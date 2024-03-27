@@ -83,7 +83,7 @@ button:focus-visible {
   align-items: center;
 
   /* animation is needed to allow gameplay to load all the background images */
-  animation: fadein 2s;
+  animation: fadein 4s;
 }
 
 @keyframes fadein {
