@@ -51,9 +51,7 @@ const FoxGame = () => {
   return (
     <div className="game-container">
       {mode === GameMode.WELCOME && <Welcome onContinue={handleStartGame} />}
-      {mode !== GameMode.LEADERBOARD && (
-        <Gameplay onEnd={handleEndGame} visible={mode === GameMode.GAME} />
-      )}
+      <Gameplay onEnd={handleEndGame} visible={mode === GameMode.GAME} />
       {mode === GameMode.LEADERBOARD && (
         <Leaderboard onExit={handleReinitGame} onReplay={handleStartGame} />
       )}

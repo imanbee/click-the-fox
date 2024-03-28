@@ -12,6 +12,8 @@ interface ImageSet {
   visible: boolean;
 }
 
+const GAME_DURATION = 30;
+
 const Gameplay = (props: GameplayProps) => {
   const { onEnd, visible } = props;
 
@@ -19,7 +21,7 @@ const Gameplay = (props: GameplayProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const [score, setScore] = useState(0);
-  const [timer, setTimer] = useState(30);
+  const [timer, setTimer] = useState(GAME_DURATION);
   const [initialLoad, setInitialLoad] = useState(true);
 
   useEffect(() => {
@@ -58,6 +60,8 @@ const Gameplay = (props: GameplayProps) => {
   useEffect(() => {
     if (timer === 0) {
       onEnd(score);
+      setScore(0);
+      setTimer(GAME_DURATION);
     }
   }, [onEnd, timer, score]);
 
